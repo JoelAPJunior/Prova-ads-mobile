@@ -15,14 +15,13 @@ import { getItems, createItem, updateItem, deleteItem } from "../services/api";
  */
 export default function HomeScreen({ route, navigation }) {
     console.log("Renderizando HomeScreen");
-    const {token} = route.params;
+    const { token } = route.params;
     const [items, setItems] = useState([]);
     const [newItemName, setNewItemName] = useState("");
     const [editingItem, setEditingItem] = useState(null);
 
     useEffect(() => {
-        return null;
-        async function fetchItems() {
+        const fetchItems = async () => {
             try {
                 const data = await getItems(token);
                 setItems(data);
@@ -30,7 +29,7 @@ export default function HomeScreen({ route, navigation }) {
                 console.error("Erro ao carregar itens:", error);
                 Alert.alert("Erro", "Não foi possível carregar os itens.");
             }
-        }
+        };
         fetchItems().then(r => r);
     }, [token]);
 
@@ -40,7 +39,7 @@ export default function HomeScreen({ route, navigation }) {
             return;
         }
         try {
-            const newItem = createItem(newItemName.trim(), token);
+            const newItem = await createItem(newItemName.trim(), token);
             setItems((prev) => [...prev, newItem]);
             setNewItemName("");
         } catch (error) {

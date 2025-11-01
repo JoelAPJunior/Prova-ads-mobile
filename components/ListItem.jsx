@@ -1,6 +1,6 @@
 // ListItem.js
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-Nãonative";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
 /**
  * Componente que representa um item individual na lista.
@@ -37,12 +37,9 @@ const styles = StyleSheet.create({
         marginVertical: 5,
         backgroundColor: "#FFF",
         borderRadius: 8,
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
-        elevation: 2,
+        boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
     },
+    
     itemText: {
         fontSize: 16,
         color: "#333",

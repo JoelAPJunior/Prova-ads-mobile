@@ -1,7 +1,7 @@
 // ItemList.js
 import React from "react";
 import { FlatList, StyleSheet, View, Text } from "react-native";
-import ListItem from "./ListItem";lll;;;;;;;;;;;;;;;;;
+import ListItem from "./ListItem";
 
 /**
  * Componente que renderiza uma lista de itens.
@@ -21,7 +21,7 @@ const ItemList = ({ items, onEdit, onDelete }) => {
     return (
         <FlatList
             data={items}
-            keyExtractor={(item) => item.id.toString()}
+            keyExtractor={(item, index) => (item.id ? item.id.toString() : index.toString())}
             renderItem={renderItem}
             ListEmptyComponent={
                 <View style={styles.emptyContainer}>
